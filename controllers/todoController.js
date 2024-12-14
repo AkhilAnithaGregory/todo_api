@@ -6,6 +6,7 @@ exports.GetTodo = async (req, res) => {
     res.json(todos);
   } catch (error) {
     res.status(500).json({ message: error.message });
+    res.status(404).json({ message: "No todos found" });
   }
 };
 
@@ -17,6 +18,7 @@ exports.CreateTodo = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
     res.status(400).json({ message: error.message });
+    res.status(404).json({ message: error.message });
     console.log("res", res);
   }
 };
@@ -29,7 +31,7 @@ exports.UpdateTodo = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
     res.status(400).json({ message: error.message });
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "No todos found" });
   }
 };
 
@@ -40,5 +42,6 @@ exports.DeleteTodo = async (req, res) => {
     res.json({ message: "Todo Deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
+    res.status(404).json({ message: "No todos found" });
   }
 };
